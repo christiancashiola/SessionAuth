@@ -1,16 +1,26 @@
-import express from "express";
+import express from 'express';
+import mongoose from 'mongoose';
 import { userRoutes } from './routes/index'; 
-import { PORT, NODE_ENV } from "./config";
+import { PORT, NODE_ENV, MONGO_URI } from './config';
 
-const app = express();
+(async () => {
+  try {
+    await mongoose.connect(MONGO_URI, { useNewUrlParser: true });
+    console.log('MongoDB connected');
 
-app.disable('x-powered-by');
+    const app = express();
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+    app.disable('x-powered-by');
 
-const apiRouter = express.Router();
-app.use('/api', apiRouter);
-apiRouter.use('/users', userRoutes);
+    app.use(express.urlencoded({ extended: true }));
+    app.use(express.json());
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+    const apiRouter = express.Router();
+    app.use('/api', apiRouter);
+    apiRouter.use('/users', userRoutes);
+
+    app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+  } catch (err) {
+    console.log(err);
+  }
+})(); 
