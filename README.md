@@ -17,4 +17,4 @@ This is the codebase for a guided walkthrough on session authentication and pers
 + Input validations using Joi
 + A React/Redux frontend using create-react-app, a proxy, and React Router
 + Custom "protected" and "auth" routes
-+ Persistend client login (the user can refreshes their page and stay logged in)
++ Persistent client login (the user can refreshes their page and stay logged in)
