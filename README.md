@@ -1,6 +1,7 @@
 # Mastering Session Authentication
 ## Background
 This is the codebase for a guided walkthrough on session authentication and persistent login using a MERN-stack.
+### [Read here on Medium](https://itnext.io/mastering-session-authentication-aa29096f6e22)
 ## Technologies
 + MongoDB (Atlas)
 + Express
